@@ -10,7 +10,7 @@ public class Circle {
 	
 	// Konstruktori
 	
-	public Circle() {
+	public Circle() { 
 		
 	}
 	

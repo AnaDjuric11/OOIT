@@ -6,7 +6,7 @@ public class Test {
 		
 		Point p1 = new Point (3,5);
 		System.out.println(p1.toString());
-		Point p2 = new Point (3,6);
+		Point p2 = new Point (3,6); 
 		Line l1 = new Line (p1,p2);
 		Line l2 = new Line (new Point(5,6), new Point(7,8));
 		System.out.println(l1);
@@ -57,6 +57,11 @@ public class Test {
 		c1.setCenter(p2);
 		c1.setR(2);
 		
+		System.out.println("Centar kruga je tacka sa koordinatama: ");
+		System.out.println("X: " + c1.getCenter().getX());
+		System.out.println("Y: " + c1.getCenter().getY());
+		System.out.println("Poluprecnik kruga je: " + c.getR());
+		
 		Rectangle r1 = new Rectangle();
 		r1.setWidth(5);
 		r1.setHeight(3);
@@ -79,6 +84,28 @@ public class Test {
 		System.out.println(p5.equals(p6));
 		System.out.println(p5.equals(c2));
 		System.out.println(l6.equals(p5));
+		
+		double circleArea = c.area();
+		System.out.println(circleArea);
+		System.out.println(c.area());
+		
+		Circle c3 = new Circle();
+		c3.setCenter(new Point(3,5));
+		
+		Line l7 = new Line();
+		Line l8 = new Line (p1, p2);
+		Line l9 = new Line (p1, p2, true);
+		Line l10 = new Line (new Point (6,7), new Point(8,9));
+		
+		Circle c4 = new Circle (new Point(3,5), 7);
+		Donut d1 = new Donut(new Point(3,5), 7, 3);
+		System.out.println(d1.area());
+		System.out.println(c4.area());
+		
+		Point p7 = new Point (3,5);
+		System.out.println(c4.equals(d1));
+		System.out.println(d1.equals(c4));
+		
 		
 
 	}

@@ -13,7 +13,7 @@ public class Rectangle {
 	
 	public Rectangle () {
 		
-	}
+	} 
 	
 	public Rectangle (Point upperleft, int width, int height) {
 		this.upperleft = upperleft;
@@ -36,6 +36,11 @@ public class Rectangle {
 	
 	public int area() {
 		return width * height;
+	}
+	
+	@Override
+	public String toString() {
+		return "upper left point: " + upperleft + ", width: " + width + ", height: " + height;
 	}
 	
 	@Override
