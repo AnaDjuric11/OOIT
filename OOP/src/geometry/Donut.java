@@ -35,6 +35,16 @@ public class Donut extends Circle{
 	}
 	
 	@Override
+	public boolean contains (int x, int y) {
+		return super.contains(x, y) && super.getCenter().distance(x, y) >= innerR; 
+	}
+	
+	@Override
+	public boolean contains (Point p) {
+		return this.contains(p.getX(), p.getY());
+	}
+	
+	@Override
 	public String toString() {
 		return super.toString() + ", inner radius: " + innerR;
 	}
@@ -61,6 +71,4 @@ public class Donut extends Circle{
 		this.innerR = innerR;
 	}
 	
-	
-
 }

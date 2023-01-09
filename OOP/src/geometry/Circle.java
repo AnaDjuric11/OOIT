@@ -1,12 +1,11 @@
 package geometry;
 
-public class Circle {
+public class Circle extends Shape{
 	
 	// Obelezja
 	
 	private Point center;
 	private int r;
-	private boolean selected;
 	
 	// Konstruktori
 	
@@ -37,6 +36,14 @@ public class Circle {
 	
 	public double area() {
 		return r * r * Math.PI;
+	}
+	
+	public boolean contains (int x, int y) {
+		return center.distance(x, y) <= r;
+	}
+	
+	public boolean contains (Point p) {
+		return center.distance(p.getX(), p.getY()) <= r;
 	}
 	
 	@Override
@@ -70,15 +77,6 @@ public class Circle {
 
 	public void setR(int r) {
 		this.r = r;
-	}
-
-	public boolean isSelected() {
-		return selected;
-	}
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
-	
+	}	
 
 }

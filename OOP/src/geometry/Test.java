@@ -77,7 +77,7 @@ public class Test {
 		Point p6 = new Point (5,5);
 		Line l6 = new Line(p4,p5);
 		Rectangle r2 = new Rectangle (p5, 50, 50, false);
-		Circle c2 = new Circle (p4, 50, true);
+		Circle c2 = new Circle (p5, 50, true);
 		
 		System.out.println(p6 == p5);
 		System.out.println(l6 == l6);
@@ -97,6 +97,7 @@ public class Test {
 		Line l9 = new Line (p1, p2, true);
 		Line l10 = new Line (new Point (6,7), new Point(8,9));
 		
+		Point p77 = new Point(3,5);
 		Circle c4 = new Circle (new Point(3,5), 7);
 		Donut d1 = new Donut(new Point(3,5), 7, 3);
 		System.out.println(d1.area());
@@ -105,7 +106,18 @@ public class Test {
 		Point p7 = new Point (3,5);
 		System.out.println(c4.equals(d1));
 		System.out.println(d1.equals(c4));
+		System.out.println(c4.toString());
 		
+		System.out.println(c4.equals(p77));
+		
+		
+		Circle c15 = new Circle (new Point(2,5),6);
+		Circle c16 = new Circle (new Point(2,5),6);
+		
+		System.out.println(c15.equals(c16));
+		System.out.println(c15 == c16);
+		System.out.println();
+		System.out.println();
 		
 
 	}

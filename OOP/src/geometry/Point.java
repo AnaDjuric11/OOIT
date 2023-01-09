@@ -1,12 +1,11 @@
 package geometry;
 
-public class Point {
+public class Point extends Shape{
 	
 	// Obelezja
 	
 	private int x;
 	private int y;
-	private boolean selected;
 	
 	// Konstruktori
 	
@@ -31,8 +30,11 @@ public class Point {
 		int dx = this.x - x;
 		int dy = this.y - y;
 		double d = Math.sqrt(dx*dx + dy*dy);
-		return d;
-		
+		return d;	
+	}
+	
+	public boolean contains (int x, int y) {
+		return this.distance(x, y)<=2; //this zato sto ne postoji obiljezje nad kojim mozemo da pozovemo, pozivamo nad objektom te klase
 	}
 	
 	@Override
@@ -67,19 +69,5 @@ public class Point {
 	public void setY(int y) {
 		this.y=y;
 	}
-	
-	public boolean isSelected() {
-		return selected;
-	}
-	
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
-	
-	
-	
-	
-	
-	
 
 }

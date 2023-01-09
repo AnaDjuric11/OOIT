@@ -6,12 +6,12 @@ public class Niz {
 
 	public static void main(String[] args) {
 		
-		/*
+		
 		int[] niz = {4,5,6,7,8};
 		for (int i = niz.length-1; i>=0; i--) {
 			System.out.print(niz[i] + " ");
 		}
-		*/
+		
 		
 		/*
 		int[] niz = {4,20,33,2,88,5};

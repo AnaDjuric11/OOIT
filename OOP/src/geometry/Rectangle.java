@@ -1,13 +1,12 @@
 package geometry;
 
-public class Rectangle {
+public class Rectangle extends Shape{
 	
 	// Obelezja
 	
 	private Point upperleft;
 	private int width;
 	private int height;
-	private boolean selected;
 	
 	// Konstruktori
 	
@@ -36,6 +35,14 @@ public class Rectangle {
 	
 	public int area() {
 		return width * height;
+	}
+	
+	public boolean contains(int x, int y) {
+		return upperleft.getX() < x && (upperleft.getX() + width > x) && upperleft.getY() < y && (upperleft.getY() + width > y);
+	}
+	
+	public boolean contains (Point p) {
+		return this.contains(p.getX(), p.getY());
 	}
 	
 	@Override
@@ -79,16 +86,5 @@ public class Rectangle {
 	public void setHeight(int height) {
 		this.height = height;
 	}
-
-	public boolean isSelected() {
-		return selected;
-	}
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
-	
-	
-	
 	
 }
