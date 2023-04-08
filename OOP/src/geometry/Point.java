@@ -1,5 +1,8 @@
 package geometry;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 public class Point extends Shape{
 	
 	// Obelezja
@@ -19,9 +22,20 @@ public class Point extends Shape{
 	}
 	
 	public Point (int x, int y, boolean selected) {
-		this.x = x;
-		this.y = y;
+		this(x, y);
+		//this.x = x;
+		//this.y = y;
 		this.selected = selected;
+	}
+	
+	public Point (int x, int y, Color color) {
+		this (x, y);
+		this.color = color;
+	}
+	
+	public Point (int x, int y, boolean selected, Color color) {
+		this (x, y, selected);
+		this.color = color;
 	}
 	
 	// Metode
@@ -33,23 +47,61 @@ public class Point extends Shape{
 		return d;	
 	}
 	
-	public boolean contains (int x, int y) {
-		return this.distance(x, y)<=2; //this zato sto ne postoji obiljezje nad kojim mozemo da pozovemo, pozivamo nad objektom te klase
-	}
-	
 	@Override
 	public String toString() {
-		return "(" + x + "," + y + ")";
+		return "(" + x + ", " + y + ")";
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
 		if(obj instanceof Point) {
 			Point temp = (Point) obj;
-			if (x == temp.x && y == temp.y) {
+			if (this.x == temp.getX() && this.y == temp.getY()) {
 				return true;
 			}
-		}return false;
+		}
+		return false;
+	}
+	
+	@Override
+	public void draw(Graphics g) {
+		g.setColor(getColor());
+		g.drawLine(x-2, y, x+2, y);
+		g.drawLine(x, y-2, x, y+2);
+		
+		if (isSelected()) {
+			g.setColor(Color.BLUE);
+			g.drawRect(x - 2, y - 2, 4, 4);
+		}
+	}
+	
+	@Override
+	public void moveTo(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	@Override
+	public void moveBy(int byX, int byY) {
+		this.x += byX;
+		this.y = y + byY;
+	}
+	
+	@Override
+	public int compareTo(Object o) {
+		if(o instanceof Point) {
+			Point temp = (Point)o;
+			return ((int)(this.distance(0, 0) - temp.distance(0, 0)));
+		}
+		return 0;
+	}
+	
+	public boolean contains (int x, int y) {
+		return this.distance(x, y)<=2; //this zato sto ne postoji obiljezje nad kojim mozemo da pozovemo, pozivamo nad objektom te klase
+	}
+	
+	public boolean contains (Point p) {
+		return contains(p.getX(), p.getY());
 	}
 	
 	// Getters & Setters

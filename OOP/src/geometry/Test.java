@@ -55,12 +55,12 @@ public class Test {
 		
 		Circle c1 = new Circle ();
 		c1.setCenter(p2);
-		c1.setR(2);
+		c1.setRadius(2);
 		
 		System.out.println("Centar kruga je tacka sa koordinatama: ");
 		System.out.println("X: " + c1.getCenter().getX());
 		System.out.println("Y: " + c1.getCenter().getY());
-		System.out.println("Poluprecnik kruga je: " + c.getR());
+		System.out.println("Poluprecnik kruga je: " + c.getRadius());
 		
 		Rectangle r1 = new Rectangle();
 		r1.setWidth(5);
