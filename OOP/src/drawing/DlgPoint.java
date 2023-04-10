@@ -31,7 +31,6 @@ public class DlgPoint extends JDialog {
 	private Point p;
 	protected boolean commited;
 	private JButton btnColor;
-	private Color color;
 	private Color outlineColor;
 
 	/**
@@ -140,7 +139,7 @@ public class DlgPoint extends JDialog {
 							} else if(Integer.parseInt(txtX.getText().toString())<0 || Integer.parseInt(txtY.getText().toString())<0) {
 								JOptionPane.showMessageDialog(null, "Insert values greater than 0!", "ERROR", JOptionPane.ERROR_MESSAGE);
 							} else {
-								p = new Point (Integer.parseInt(txtX.getText().toString()), Integer.parseInt(txtY.getText().toString()), false, color);
+								p = new Point (Integer.parseInt(txtX.getText().toString()), Integer.parseInt(txtY.getText().toString()), false, outlineColor);
 								commited = true;
 								setVisible(false);
 							}
@@ -159,7 +158,7 @@ public class DlgPoint extends JDialog {
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						setVisible(false);
+						dispose();
 					}
 				});
 				cancelButton.setBackground(new Color(216, 191, 216));
@@ -208,14 +207,6 @@ public class DlgPoint extends JDialog {
 
 	public void setBtnColor(JButton btnColor) {
 		this.btnColor = btnColor;
-	}
-
-	public Color getColor() {
-		return color;
-	}
-
-	public void setColor(Color color) {
-		this.color = color;
 	}
 
 	public Color getOutlineColor() {

@@ -33,8 +33,7 @@ public class DlgLine extends JDialog {
 	private Line line;
 	protected boolean commited;
 	private JButton btnColor;
-	private Color cLine;
-	private Color outlineColor1;	
+	private Color outlineColor;	
 
 	/**
 	 * Launch the application.
@@ -174,9 +173,9 @@ public class DlgLine extends JDialog {
 			JButton btnColor = new JButton("Select color");
 			btnColor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					outlineColor1 = JColorChooser.showDialog(null, "Choose outline color ", btnColor.getBackground());
-					if (outlineColor1 != null) {
-						btnColor.setBackground(outlineColor1);
+					outlineColor = JColorChooser.showDialog(null, "Choose outline color ", btnColor.getBackground());
+					if (outlineColor != null) {
+						btnColor.setBackground(outlineColor);
 					}
 				}
 			});
@@ -204,7 +203,7 @@ public class DlgLine extends JDialog {
 								JOptionPane.showMessageDialog(null, "Insert values greater than 0!", "ERROR", JOptionPane.ERROR_MESSAGE);
 							} else {
 								line = new Line (new Point(Integer.parseInt(txtStartX.getText().toString()), Integer.parseInt(txtStartY.getText().toString())),
-										new Point(Integer.parseInt(txtEndX.getText().toString()), Integer.parseInt(txtEndY.getText().toString())), false, cLine);
+										new Point(Integer.parseInt(txtEndX.getText().toString()), Integer.parseInt(txtEndY.getText().toString())), false, outlineColor);
 								commited = true;
 								setVisible(false);
 							}
@@ -224,7 +223,7 @@ public class DlgLine extends JDialog {
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						setVisible(false);
+						dispose();
 					}
 				});
 				cancelButton.setBackground(new Color(216, 191, 216));
@@ -292,20 +291,12 @@ public class DlgLine extends JDialog {
 		this.btnColor = btnColor;
 	}
 
-	public Color getcLine() {
-		return cLine;
+	public Color getOutlineColor() {
+		return outlineColor;
 	}
 
-	public void setcLine(Color cLine) {
-		this.cLine = cLine;
-	}
-
-	public Color getOutlineColor1() {
-		return outlineColor1;
-	}
-
-	public void setOutlineColor1(Color outlineColor1) {
-		this.outlineColor1 = outlineColor1;
+	public void setOutlineColor(Color outlineColor) {
+		this.outlineColor = outlineColor;
 	}
 
 }
