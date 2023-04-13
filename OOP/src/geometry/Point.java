@@ -66,12 +66,11 @@ public class Point extends Shape{
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(getColor());
-		g.drawLine(x-2, y, x+2, y);
-		g.drawLine(x, y-2, x, y+2);
+		g.drawLine(this.x - 2, this.y, this.x + 2, this.y);
+		g.drawLine(this.x, this.y - 2, this.x, this.y + 2);
 		
 		if (isSelected()) {
-			g.setColor(Color.BLUE);
-			g.drawRect(x - 2, y - 2, 4, 4);
+			g.drawRect(this.x - 4, this.y - 4, 8, 8);
 		}
 	}
 	

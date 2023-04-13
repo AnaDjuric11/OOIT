@@ -83,7 +83,6 @@ public class Rectangle extends Shape1 {
 		g.drawRect(upperLeft.getX(), upperLeft.getY(), width, height);
 		this.fill(g);
 		if(isSelected()) {
-			g.setColor(Color.BLUE);
 	        g.drawRect(upperLeft.getX() - 2,upperLeft.getY() - 2, 4, 4);
 	        g.drawRect(upperLeft.getX() + width - 2,upperLeft.getY() - 2, 4, 4);
 	        g.drawRect(upperLeft.getX() - 2,upperLeft.getY() + height - 2, 4, 4);

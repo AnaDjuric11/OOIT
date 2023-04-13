@@ -133,7 +133,8 @@ public class DlgPoint extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						try {
+						
+						 try {
 							if (txtX.getText().isEmpty() || txtY.getText().isEmpty()) {
 								JOptionPane.showMessageDialog(null, "All fields are required!", "ERROR", JOptionPane.ERROR_MESSAGE);
 							} else if(Integer.parseInt(txtX.getText().toString())<0 || Integer.parseInt(txtY.getText().toString())<0) {
@@ -141,7 +142,7 @@ public class DlgPoint extends JDialog {
 							} else {
 								p = new Point (Integer.parseInt(txtX.getText().toString()), Integer.parseInt(txtY.getText().toString()), false, outlineColor);
 								commited = true;
-								setVisible(false);
+								dispose();
 							}
 						} catch (Exception e5) {
 							JOptionPane.showMessageDialog(null, "Enter numbers only!", "ERROR", JOptionPane.ERROR_MESSAGE);
