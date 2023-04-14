@@ -205,7 +205,7 @@ public class DlgLine extends JDialog {
 								line = new Line (new Point(Integer.parseInt(txtStartX.getText().toString()), Integer.parseInt(txtStartY.getText().toString())),
 										new Point(Integer.parseInt(txtEndX.getText().toString()), Integer.parseInt(txtEndY.getText().toString())), false, outlineColor);
 								commited = true;
-								setVisible(false);
+								dispose();
 							}
 						} catch (Exception e2) {
 							JOptionPane.showMessageDialog(null, "Enter numbers only!", "ERROR", JOptionPane.ERROR_MESSAGE);
