@@ -83,6 +83,7 @@ public class Rectangle extends Shape1 {
 		g.drawRect(upperLeft.getX(), upperLeft.getY(), width, height);
 		this.fill(g);
 		if(isSelected()) {
+			g.setColor(getColor());
 	        g.drawRect(upperLeft.getX() - 2,upperLeft.getY() - 2, 4, 4);
 	        g.drawRect(upperLeft.getX() + width - 2,upperLeft.getY() - 2, 4, 4);
 	        g.drawRect(upperLeft.getX() - 2,upperLeft.getY() + height - 2, 4, 4);
@@ -92,7 +93,7 @@ public class Rectangle extends Shape1 {
 	
 	public void fill (Graphics g) {
 		g.setColor(getInnerColor());
-		g.fillRect(this.getUpperLeft().getX() + 1, this.getUpperLeft().getY() + 1, this.width - 2, this.height - 2);
+		g.fillRect(this.getUpperLeft().getX() + 1, this.getUpperLeft().getY() + 1, this.width - 1, this.height - 1);
 	}
 	
 	@Override

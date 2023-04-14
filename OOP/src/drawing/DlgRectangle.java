@@ -35,8 +35,8 @@ public class DlgRectangle extends JDialog {
 	protected boolean commited;
 	private JButton btnInnerColor;
 	private JButton btnOutlineColor;
-	private Color innerColor;
-	private Color outlineColor;
+	private Color innerColor = Color.WHITE;
+	private Color outlineColor = Color.BLACK;
 
 	/**
 	 * Launch the application.
@@ -212,7 +212,7 @@ public class DlgRectangle extends JDialog {
 								JOptionPane.showMessageDialog(null, "All values are required!", "ERROR", JOptionPane.ERROR_MESSAGE);
 							} else if (Integer.parseInt(txtUpperX.getText().toString())<0 || Integer.parseInt(txtUpperY.getText().toString())<0 || 
 									Integer.parseInt(txtWidth.getText().toString())<0 || Integer.parseInt(txtHeight.getText().toString())<0) {
-										JOptionPane.showMessageDialog(null, "Insert values greater than o!", "ERROR", JOptionPane.ERROR_MESSAGE);
+										JOptionPane.showMessageDialog(null, "Insert values greater than 0!", "ERROR", JOptionPane.ERROR_MESSAGE);
 							} else {
 								rectangle = new Rectangle(new Point(Integer.parseInt(txtUpperX.getText().toString()), Integer.parseInt(txtUpperY.getText().toString())), Integer.parseInt(txtWidth.getText().toString()), Integer.parseInt(txtHeight.getText().toString()), false, outlineColor, innerColor);
 								commited = true;

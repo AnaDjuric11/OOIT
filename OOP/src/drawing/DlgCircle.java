@@ -34,8 +34,8 @@ public class DlgCircle extends JDialog {
 	protected boolean commited;
 	private JButton btnInnerColor;
 	private JButton btnOutlieColor;
-	private Color innerColor;
-	private Color outlineColor;
+	private Color innerColor = Color.WHITE;
+	private Color outlineColor = Color.BLACK;
 
 	/**
 	 * Launch the application.

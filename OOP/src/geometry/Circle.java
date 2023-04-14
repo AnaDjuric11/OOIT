@@ -76,17 +76,15 @@ public class Circle extends Shape1 {
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(getColor());
-		g.drawOval(center.getX()-radius, center.getY()-radius,
-				radius*2, radius*2);
+		g.drawOval(center.getX()-radius, center.getY()-radius, radius*2, radius*2);
 		this.fill(g);
 		if (isSelected()) {
+			g.setColor(getColor());
 			g.drawRect(center.getX()-2, center.getY()-2, 4, 4);
 			g.drawRect(center.getX()- radius -2, center.getY()-2, 4, 4);//lijevi kvadrat
 			g.drawRect(center.getX()+ radius -2, center.getY()-2, 4, 4);//desni kvadrat
 			g.drawRect(center.getX()-2, center.getY()-radius-2, 4, 4);//gornji kvadrat
 			g.drawRect(center.getX()-2, center.getY()+radius-2, 4, 4);//donji kvadrat
-		
-		   
 		}
 	}
 	

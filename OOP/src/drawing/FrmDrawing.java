@@ -114,119 +114,125 @@ public class FrmDrawing extends JFrame {
 					}else if(selectedShapes.size()>1) {
 						JOptionPane.showMessageDialog(null, "It is not possible to modify multiple objects at once. Please select one object to modify.", "ERROR", JOptionPane.ERROR_MESSAGE);
 					}else {
-					for(Shape s : pnlDrawing.getShapes()) {
-						if(s instanceof Point) {
-							if(s.isSelected()) {
-								Point temp = (Point) s;
-								Point p = new Point();
-								
-								DlgPoint point = new DlgPoint();
-								point.getTxtX().setText(Integer.toString(temp.getX()));
-								point.getTxtY().setText(Integer.toString(temp.getY()));
-								point.setVisible(true);
-								
-								if(point.isCommited()) {
-									p = point.getP();
-									p.setSelected(false);
-									pnlDrawing.getShapes().remove(s);
-									pnlDrawing.getShapes().add(p);
-									//pnlDrawing.getShapes().set(pnlDrawing.getShapes().indexOf(temp), p);
-									repaint();
-									selectedShapes.clear();
+						try {
+							for(Shape s : pnlDrawing.getShapes()) {
+								if(s instanceof Point) {
+									if(s.isSelected()) {
+										Point temp = (Point) s;
+										Point p = new Point();
+										
+										DlgPoint point = new DlgPoint();
+										point.getTxtX().setText(Integer.toString(temp.getX()));
+										point.getTxtY().setText(Integer.toString(temp.getY()));
+										point.setOutlineColor(temp.getColor());
+										point.setVisible(true);
+										
+										if(point.isCommited()) {
+											p = point.getP();
+											p.setSelected(false);
+											pnlDrawing.getShapes().add(p);
+											pnlDrawing.getShapes().remove(s);
+											repaint();
+											selectedShapes.clear();
+										}
+									}
+								}else if(s instanceof Line) {
+									if(s.isSelected()) {
+										Line temp = (Line) s;
+										Line l = new Line();
+										
+										DlgLine line = new DlgLine();
+										line.getTxtStartX().setText(Integer.toString(temp.getStartPoint().getX()));
+										line.getTxtStartY().setText(Integer.toString(temp.getStartPoint().getY()));
+										line.getTxtEndX().setText(Integer.toString(temp.getEndPoint().getX()));
+										line.getTxtEndY().setText(Integer.toString(temp.getEndPoint().getY()));
+										line.setOutlineColor(temp.getColor());
+										line.setVisible(true);
+										
+										if(line.isCommited()) {
+											l = line.getLine();
+											l.setSelected(false);
+											pnlDrawing.getShapes().add(l);
+											pnlDrawing.getShapes().remove(s);
+											repaint();
+											selectedShapes.clear();
+										}
+									}
+								}else if(s instanceof Rectangle) {
+									if(s.isSelected()) {
+										Rectangle temp = (Rectangle) s;
+										Rectangle r = new Rectangle();
+										
+										DlgRectangle rect = new DlgRectangle();
+										rect.getTxtUpperX().setText(Integer.toString(temp.getUpperLeft().getX()));
+										rect.getTxtUpperY().setText(Integer.toString(temp.getUpperLeft().getY()));
+										rect.getTxtWidth().setText(Integer.toString(temp.getWidth()));
+										rect.getTxtHeight().setText(Integer.toString(temp.getHeight()));
+										rect.setInnerColor(temp.getInnerColor());
+										rect.setOutlineColor(temp.getColor());
+										rect.setVisible(true);
+										
+										if(rect.isCommited()) {
+											r = rect.getRectangle();
+											r.setSelected(false);
+											pnlDrawing.getShapes().add(r);
+											pnlDrawing.getShapes().remove(s);
+											repaint();
+											selectedShapes.clear();
+										}
+									}
+								}else if(s instanceof Circle && (s instanceof Donut)==false) {
+									if(s.isSelected()) {
+										Circle temp = (Circle) s;
+										Circle c = new Circle();
+										
+										DlgCircle circle = new DlgCircle();
+										circle.getTxtXCenter().setText(Integer.toString(temp.getCenter().getX()));
+										circle.getTxtYCenter().setText(Integer.toString(temp.getCenter().getY()));
+										circle.getTxtRadius().setText(Integer.toString(temp.getRadius()));
+										circle.setInnerColor(temp.getInnerColor());
+										circle.setOutlineColor(temp.getColor());
+										circle.setVisible(true);
+										
+										if(circle.isCommited()) {
+											c = circle.getCircle();
+											c.setSelected(false);
+											pnlDrawing.getShapes().add(c);
+											pnlDrawing.getShapes().remove(s);
+											repaint();
+											selectedShapes.clear();
+										}
+									}
+								}else if(s instanceof Donut) {
+									if(s.isSelected()) {
+									Donut temp = (Donut) s;
+									Donut d = new Donut();
+									
+									DlgDonut donut = new DlgDonut();
+									donut.getTxtX().setText(Integer.toString(temp.getCenter().getX()));
+									donut.getTxtY().setText(Integer.toString(temp.getCenter().getY()));
+									donut.getTxtOuterRadius().setText(Integer.toString(temp.getRadius()));
+									donut.getTxtInnerRadius().setText(Integer.toString(temp.getInnerRadius()));
+									donut.setInnerColor(temp.getInnerColor());
+									donut.setOutlineColor(temp.getColor());
+									donut.setVisible(true);
+									
+									if(donut.isCommited()) {
+										d = donut.getDonut();
+										d.setSelected(false);
+										pnlDrawing.getShapes().add(d);
+										pnlDrawing.getShapes().remove(s);
+										repaint();
+										selectedShapes.clear();
+										}
+									}
 								}
 							}
-						}else if(s instanceof Line) {
-							if(s.isSelected()) {
-								Line temp = (Line) s;
-								Line l = new Line();
-								
-								DlgLine line = new DlgLine();
-								line.getTxtStartX().setText(Integer.toString(temp.getStartPoint().getX()));
-								line.getTxtStartY().setText(Integer.toString(temp.getStartPoint().getY()));
-								line.getTxtEndX().setText(Integer.toString(temp.getEndPoint().getX()));
-								line.getTxtEndY().setText(Integer.toString(temp.getEndPoint().getY()));
-								line.setVisible(true);
-								
-								if(line.isCommited()) {
-									l = line.getLine();
-									l.setSelected(false);
-									pnlDrawing.getShapes().remove(s);
-									pnlDrawing.getShapes().add(l);
-									//pnlDrawing.getShapes().set(pnlDrawing.getShapes().indexOf(temp), l);
-									repaint();
-									selectedShapes.clear();
-								}
-							}
-						}else if(s instanceof Rectangle) {
-							if(s.isSelected()) {
-								Rectangle temp = (Rectangle) s;
-								Rectangle r = new Rectangle();
-								
-								DlgRectangle rect = new DlgRectangle();
-								rect.getTxtUpperX().setText(Integer.toString(temp.getUpperLeft().getX()));
-								rect.getTxtUpperY().setText(Integer.toString(temp.getUpperLeft().getY()));
-								rect.getTxtWidth().setText(Integer.toString(temp.getWidth()));
-								rect.getTxtHeight().setText(Integer.toString(temp.getHeight()));
-								rect.setVisible(true);
-								
-								if(rect.isCommited()) {
-									r = rect.getRectangle();
-									r.setSelected(false);
-									pnlDrawing.getShapes().remove(s);
-									pnlDrawing.getShapes().add(r);
-									//pnlDrawing.getShapes().set(pnlDrawing.getShapes().indexOf(temp), r);
-									repaint();
-									selectedShapes.clear();
-								}
-							}
-						}else if(s instanceof Circle && (s instanceof Donut)==false) {
-							if(s.isSelected()) {
-								Circle temp = (Circle) s;
-								Circle c = new Circle();
-								
-								DlgCircle circle = new DlgCircle();
-								circle.getTxtXCenter().setText(Integer.toString(temp.getCenter().getX()));
-								circle.getTxtYCenter().setText(Integer.toString(temp.getCenter().getY()));
-								circle.getTxtRadius().setText(Integer.toString(temp.getRadius()));
-								circle.setVisible(true);
-								
-								if(circle.isCommited()) {
-									c = circle.getCircle();
-									c.setSelected(false);
-									pnlDrawing.getShapes().remove(s);
-									pnlDrawing.getShapes().add(c);
-									//pnlDrawing.getShapes().set(pnlDrawing.getShapes().indexOf(temp), c);
-									repaint();
-									selectedShapes.clear();
-								}
-							}
-						}else if(s instanceof Donut) {
-							if(s.isSelected()) {
-							Donut temp = (Donut) s;
-							Donut d = new Donut();
-							
-							DlgDonut donut = new DlgDonut();
-							donut.getTxtX().setText(Integer.toString(temp.getCenter().getX()));
-							donut.getTxtY().setText(Integer.toString(temp.getCenter().getY()));
-							donut.getTxtOuterRadius().setText(Integer.toString(temp.getRadius()));
-							donut.getTxtInnerRadius().setText(Integer.toString(temp.getInnerRadius()));
-							donut.setVisible(true);
-							
-							if(donut.isCommited()) {
-								d = donut.getDonut();
-								d.setSelected(false);
-								pnlDrawing.getShapes().remove(s);
-								pnlDrawing.getShapes().add(d);
-								//pnlDrawing.getShapes().set(pnlDrawing.getShapes().indexOf(temp), d);
-								repaint();
-								selectedShapes.clear();
-								}
-							}
+						}catch(Exception cme) {	
 						}
 					}
 				}
 			}
-		}
 		});
 		buttonGroup.add(tglbtnModify);
 		tglbtnModify.setBounds(313, 5, 100, 23);
@@ -281,6 +287,8 @@ public class FrmDrawing extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(tglbtnSelect.isSelected()) {
+					
+	
 					for(Shape s : pnlDrawing.getShapes()) {
 						if(s.contains(e.getX(), e.getY())) {
 							if(s instanceof Point) {
@@ -346,11 +354,11 @@ public class FrmDrawing extends JFrame {
 					brojac++;
 					if(brojac == 1) {
 						startPoint = new Point(e.getX(),e.getY());
-						pnlDrawing.getShapes().add(startPoint);
+						//pnlDrawing.getShapes().add(startPoint);
 						repaint();
 					}else if(brojac == 2){
 						endPoint = new Point(e.getX(),e.getY());
-						pnlDrawing.getShapes().remove(startPoint);
+						//pnlDrawing.getShapes().remove(startPoint);
 						Line l = new Line(startPoint, endPoint);
 						pnlDrawing.getShapes().add(l);
 						repaint();
@@ -367,11 +375,7 @@ public class FrmDrawing extends JFrame {
 					repaint();
 					
 					if(rect.isCommited()) {
-						int width = Integer.parseInt(rect.getTxtWidth().getText());
-						int height = Integer.parseInt(rect.getTxtHeight().getText());
-						outlineColor = rect.getOutlineColor();
-						innerColor = rect.getInnerColor();
-						Rectangle r = new Rectangle(upperLeft, width, height, outlineColor, innerColor);
+						Rectangle r = rect.getRectangle();
 						pnlDrawing.getShapes().add(r);
 						repaint();
 					}		
@@ -386,10 +390,7 @@ public class FrmDrawing extends JFrame {
 					repaint();
 					
 					if(circle.isCommited()) {
-						int radius = Integer.parseInt(circle.getTxtRadius().getText());
-						outlineColor = circle.getOutlineColor();
-						innerColor = circle.getInnerColor();
-						Circle c = new Circle(center, radius, outlineColor, innerColor);
+						Circle c = circle.getCircle();
 						pnlDrawing.getShapes().add(c);
 						repaint();
 					}
@@ -404,11 +405,7 @@ public class FrmDrawing extends JFrame {
 					repaint();
 					
 					if(donut.isCommited()) {
-						int outerRadius = Integer.parseInt(donut.getTxtOuterRadius().getText());
-						int innerRadius = Integer.parseInt(donut.getTxtInnerRadius().getText());
-						outlineColor = donut.getOutlineColor();
-						innerColor = donut.getInnerColor();
-						Donut d = new Donut(center, outerRadius, innerRadius, outlineColor, innerColor);
+						Donut d = donut.getDonut();
 						pnlDrawing.getShapes().add(d);
 						repaint();
 					}

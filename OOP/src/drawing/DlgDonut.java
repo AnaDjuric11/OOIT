@@ -35,8 +35,8 @@ public class DlgDonut extends JDialog {
 	protected boolean commited;
 	private JButton btnInnerColor;
 	private JButton btnOutlineColor;
-	private Color innerColor;
-	private Color outlineColor;
+	private Color innerColor = Color.WHITE;
+	private Color outlineColor = Color.BLACK;
 
 	/**
 	 * Launch the application.
