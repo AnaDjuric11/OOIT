@@ -37,6 +37,7 @@ public class FrmDrawing extends JFrame {
 	private Color outlineColor, innerColor;
 	private ArrayList<Shape> selectedShapes = new ArrayList<Shape>();
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private Shape lastSelectedShape;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -111,8 +112,8 @@ public class FrmDrawing extends JFrame {
 						JOptionPane.showMessageDialog(null, "The field is empty! To perform this operation, please create a shape first.", "ERROR", JOptionPane.ERROR_MESSAGE);
 					}else if(selectedShapes.isEmpty()) {
 						JOptionPane.showMessageDialog(null, "To modify an object, please select it first.", "ERROR", JOptionPane.ERROR_MESSAGE);
-					}else if(selectedShapes.size()>1) {
-						JOptionPane.showMessageDialog(null, "It is not possible to modify multiple objects at once. Please select one object to modify.", "ERROR", JOptionPane.ERROR_MESSAGE);
+					/*}else if(selectedShapes.size()>1) {
+						JOptionPane.showMessageDialog(null, "It is not possible to modify multiple objects at once. Please select one object to modify.", "ERROR", JOptionPane.ERROR_MESSAGE);*/
 					}else {
 						try {
 							for(Shape s : pnlDrawing.getShapes()) {
@@ -288,8 +289,47 @@ public class FrmDrawing extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if(tglbtnSelect.isSelected()) {
 					
-	
 					for(Shape s : pnlDrawing.getShapes()) {
+					    if(s.contains(e.getX(), e.getY())) {
+					        if(s instanceof Point || s instanceof Line || s instanceof Rectangle || s.getClass() == Circle.class) {
+					            if(lastSelectedShape != null && lastSelectedShape != s) {
+					                lastSelectedShape.setSelected(false);
+					                selectedShapes.remove(lastSelectedShape);
+					            }
+					            if(!s.isSelected()) {
+					                s.setSelected(true);
+					                selectedShapes.add(s);
+					                lastSelectedShape = s;
+					                repaint();
+					            } else {
+					                s.setSelected(false);
+					                selectedShapes.remove(s);
+					                lastSelectedShape = null;
+					                repaint();
+					            }
+					        } else if(s instanceof Donut) {
+					            if(lastSelectedShape != null && lastSelectedShape != s && lastSelectedShape.getClass() == Donut.class) {
+					                lastSelectedShape.setSelected(false);
+					                selectedShapes.remove(lastSelectedShape);
+					            }
+					            if(!s.isSelected()) {
+					                s.setSelected(true);
+					                selectedShapes.add(s);
+					                lastSelectedShape = s;
+					                repaint();
+					            } else {
+					                s.setSelected(false);
+					                selectedShapes.remove(s);
+					                lastSelectedShape = null;
+					                repaint();
+					            }
+					        }
+					    }
+					}
+					
+					
+	
+					/*for(Shape s : pnlDrawing.getShapes()) {
 						if(s.contains(e.getX(), e.getY())) {
 							if(s instanceof Point) {
 								if(!s.isSelected()) {
@@ -345,21 +385,24 @@ public class FrmDrawing extends JFrame {
 								}
 							}
 						}
-					}
+					}*/
 				}else if(tglbtnPoint.isSelected()) {
 					Point p = new Point(e.getX(),e.getY());
+					p.setColor(Color.BLACK);
 					pnlDrawing.getShapes().add(p);
 					repaint();
 				}else if(tglbtnLine.isSelected()){
 					brojac++;
 					if(brojac == 1) {
 						startPoint = new Point(e.getX(),e.getY());
+						startPoint.setColor(Color.BLACK);
 						//pnlDrawing.getShapes().add(startPoint);
 						repaint();
 					}else if(brojac == 2){
 						endPoint = new Point(e.getX(),e.getY());
 						//pnlDrawing.getShapes().remove(startPoint);
 						Line l = new Line(startPoint, endPoint);
+						l.setColor(Color.BLACK);
 						pnlDrawing.getShapes().add(l);
 						repaint();
 						brojac = 0;

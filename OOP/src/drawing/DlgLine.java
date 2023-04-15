@@ -33,7 +33,7 @@ public class DlgLine extends JDialog {
 	private Line line;
 	protected boolean commited;
 	private JButton btnColor;
-	private Color outlineColor;	
+	private Color outlineColor;
 
 	/**
 	 * Launch the application.
