@@ -28,11 +28,12 @@ public class FrmSort extends JFrame {
 
 	private JPanel contentPane;
 	DefaultListModel<Rectangle> dlm = new DefaultListModel<Rectangle>();
-	ArrayList<Rectangle> listRect = new ArrayList<Rectangle>();
+	ArrayList<Rectangle> listRect = new ArrayList<Rectangle>(); 
 
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
