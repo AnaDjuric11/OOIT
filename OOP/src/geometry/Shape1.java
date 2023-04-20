@@ -7,7 +7,7 @@ public abstract class Shape1 extends Shape {
 	
 	protected Color innerColor;
 	
-	public abstract boolean contains(Point p);
+	//public abstract boolean contains(Point p);
 	
 	public abstract void fill (Graphics g);
 

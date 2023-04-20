@@ -131,8 +131,8 @@ public class FrmDrawing extends JFrame {
 										if(point.isCommited()) {
 											p = point.getP();
 											p.setSelected(false);
-											pnlDrawing.getShapes().add(p);
-											pnlDrawing.getShapes().remove(s);
+											p.moveTo(Integer.parseInt(point.getTxtX().getText()), Integer.parseInt(point.getTxtY().getText()));
+											pnlDrawing.getShapes().set(pnlDrawing.getShapes().indexOf(temp), p);
 											repaint();
 											selectedShapes.clear();
 										}
@@ -419,6 +419,8 @@ public class FrmDrawing extends JFrame {
 					
 					if(rect.isCommited()) {
 						Rectangle r = rect.getRectangle();
+						//r.setInnerColor(Color.WHITE);
+						//r.setColor(Color.BLACK);
 						pnlDrawing.getShapes().add(r);
 						repaint();
 					}		
@@ -434,6 +436,8 @@ public class FrmDrawing extends JFrame {
 					
 					if(circle.isCommited()) {
 						Circle c = circle.getCircle();
+						//c.setInnerColor(Color.WHITE);
+						//c.setColor(Color.BLACK);
 						pnlDrawing.getShapes().add(c);
 						repaint();
 					}
@@ -449,6 +453,8 @@ public class FrmDrawing extends JFrame {
 					
 					if(donut.isCommited()) {
 						Donut d = donut.getDonut();
+						//d.setInnerColor(Color.WHITE);
+						//d.setColor(Color.BLACK);
 						pnlDrawing.getShapes().add(d);
 						repaint();
 					}
